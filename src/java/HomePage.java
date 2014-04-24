@@ -1,5 +1,6 @@
 
 import java.io.*;
+import java.net.URL;
 import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -71,10 +72,15 @@ public class HomePage extends HttpServlet {
         String blankPdfDirectory = "";
         String swfToolsDirectory = "";  
         try
-        {
+        {            
             Context env = (Context) new InitialContext().lookup("java:comp/env");
             pdfSavingDirectory = (String) env.lookup("pdfSavingDirectory");
-            blankPdfDirectory = (String) env.lookup("blankpdfDirectory");
+//            blankPdfDirectory = (String) env.lookup("blankpdfDirectory");
+            blankPdfDirectory = "../assets/blankpdf.pdf";
+            URL fileUrl = getClass().getClassLoader().getResource("assets/blankpdf.pdf");
+            
+            blankPdfDirectory = fileUrl.toURI().getPath();
+            
             swfToolsDirectory = (String) env.lookup("swfToolInstallationDirectory");
         }
         catch(Exception ex)
