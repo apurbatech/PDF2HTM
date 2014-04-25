@@ -76,7 +76,7 @@ public class HomePage extends HttpServlet {
             Context env = (Context) new InitialContext().lookup("java:comp/env");
             pdfSavingDirectory = (String) env.lookup("pdfSavingDirectory");
 //            blankPdfDirectory = (String) env.lookup("blankpdfDirectory");
-            blankPdfDirectory = "../assets/blankpdf.pdf";
+            //blankPdfDirectory = "../assets/blankpdf.pdf";
             URL fileUrl = getClass().getClassLoader().getResource("assets/blankpdf.pdf");
             
             blankPdfDirectory = fileUrl.toURI().getPath();
